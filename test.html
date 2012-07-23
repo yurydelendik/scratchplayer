@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script type="text/javascript" src="scratch-parser.js"></script>
+    <script type="text/javascript" src="scratch-player.js"></script>
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+    <script>
+      var reader = new ScratchReader();
+      var player;
+      reader.loadFile('test.sb', function(model, error) {
+        if (error)
+          throw 'Scratch loading error: ' + error;
+
+        var canvas = document.getElementById('c');
+        player = new ScratchPlayer(model, canvas);
+        player.start();
+      });
+    </script>
+  </body>
+</html>
